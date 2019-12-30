@@ -1,0 +1,29 @@
+DEF:
+BRF is a variant of k-means fot large data sets.
+Assumes:
+Dataset are normally distributed.
+Algorithm:
+Input: D:Large dataset,k:the number of cluters
+Process:
+Split D into chunks that can be fitted into memory. 
+Initilaze chose k centroids by some approach.
+for each chunks C:
+	for each Points P:
+		if P is close enough to a Centroid i:#Q1
+			feed P into DSi	
+	Summarize DSi and Adjust N,Sum,SumSqr
+	Group others points with RS left in last round into CSs.
+	if two clusters in CS are close enough:
+		Merge the two clusters into one #Q2:
+	the remanider points feed into RS
+Points in RS and CSs feed into the closest clusters.
+
+Q1:How to decide a point P (x1,x2,...,xd) whether is close to Centroid C(c1,c2,...,cd)?
+Mahalanobis distance is less than a threshold:
+normalize in each dimension: y = (P-C)/cita
+d(x,c)=sqrt(sum(square(y)))
+d(x,c)<2*sqrt(d) <=> P is close enough to C
+
+Q2: Shoud 2 CS subclusters be combined?
+try combined and compute the variance of combined subclusters
+the variance is blow a threshold <=> should combined
