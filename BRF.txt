@@ -27,3 +27,7 @@ d(x,c)<2*sqrt(d) <=> P is close enough to C
 Q2: Shoud 2 CS subclusters be combined?
 try combined and compute the variance of combined subclusters
 the variance is blow a threshold <=> should combined
+
+Problem:
+Assumeds clusters are normally distributed in each dimension.
+And axes are fixed.
